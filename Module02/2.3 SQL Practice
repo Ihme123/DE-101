@@ -1,0 +1,25 @@
+SELECT
+o.customer_name,
+SUM(o.sales) as Total_Sales,
+SUM(o.profit) as Total_Profit
+FROM orders o
+GROUP BY o.customer_name
+ORDER BY SUM(o.profit) DESC
+LIMIT 5;
+
+SELECT
+o.region,
+SUM(o.sales) as Total_Sales,
+SUM(o.profit) as Total_Profit
+FROM orders o
+GROUP BY o.region
+ORDER BY SUM(o.profit) DESC;
+
+SELECT
+o.state,
+SUM(o.sales) as Total_Sales,
+SUM(o.profit) as Total_Profit
+FROM orders o
+GROUP BY o.state
+ORDER BY SUM(o.profit) DESC
+LIMIT 10

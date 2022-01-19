@@ -1,0 +1,38 @@
+CREATE TABLE "time"
+(
+ time_id int NOT NULL,
+ "date"    date NULL,
+ CONSTRAINT PK_35 PRIMARY KEY ( time_id )
+);
+
+CREATE TABLE impact
+(
+ impact_id         int NOT NULL,
+ precipation       int NULL,
+ vegetation        int NULL,
+ impact_of_eng_act int NULL,
+ CONSTRAINT PK_27 PRIMARY KEY ( impact_id )
+);
+
+CREATE TABLE "control"
+(
+ control_id     int NOT NULL,
+ slope_grad     int NULL,
+ slope_height   int NULL,
+ slope_type     varchar(20) NULL,
+ soil_structure varchar(20) NULL,
+ CONSTRAINT PK_20 PRIMARY KEY ( control_id )
+);
+
+CREATE TABLE hazards
+(
+ hazard_id   int NOT NULL,
+ hazard_type varchar(30) NULL,
+ impact_id   int NOT NULL,
+ control_id  int NOT NULL,
+ time_id     int NOT NULL,
+ CONSTRAINT PK_5 PRIMARY KEY ( hazard_id ),
+ CONSTRAINT FK_36 FOREIGN KEY ( time_id ) REFERENCES "time" ( time_id ),
+ CONSTRAINT FK_48 FOREIGN KEY ( control_id ) REFERENCES "control" ( control_id ),
+ CONSTRAINT FK_54 FOREIGN KEY ( impact_id ) REFERENCES impact ( impact_id )
+);
